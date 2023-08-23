@@ -1,21 +1,27 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+import os
+import dotenv
 
-# Replace 'mydatabase' with your actual database name
-database_name = "phddb"
-user = "root"
-password = "Inikst-2018"
-host = "localhost"
-port = "3306"
+# load the .env file
+dotenv.load_dotenv()
 
+DATABASE_URL = os.getenv("DATABASE_URL")
 # database_name = "phddbv1-35303339ced5"
 # user = "phddbv1-35303339ced5"
-# password = "hcbnibmkl8"
-# host = "sdb-65.hosting.stackcp.net"
+# password = "Inikst-2018"
+# host = "mysql.gb.stackcp.com"
+# port = "60673"
 
-SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database_name}"
+# if process.env.JAWSDB_URL:
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+# DATABASE_URL = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database_name}"
+
+
+# engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
