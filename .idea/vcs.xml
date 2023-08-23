@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/enigmatic-ravine-84705" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/safe-drive-africa-api" vcs="Git" />
   </component>
 </project>
