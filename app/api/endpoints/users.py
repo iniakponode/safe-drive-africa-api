@@ -29,7 +29,7 @@ async def get_all_users_endpoint(skip: int = 0, limit: int = 100, db: Session = 
 
 
 @router.get("/users-include-reports/", response_model=list[User])
-async def get_all_users_including_reports_endpoint(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+async def get_all_users_including_reports_endpoint(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
     users = get_all_users_with_reports(db, skip=skip, limit=limit)
 
