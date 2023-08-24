@@ -21,14 +21,20 @@ def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/users/", response_model=list[User])
-async def get_all_users_endpoint(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+async def get_all_users_endpoint(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = get_all_users(db, skip=skip, limit=limit)
+    if users is None:
+        raise HTTPException(status_code=404, detail="No Users found")
     return users
 
 
 @router.get("/users-include-reports/", response_model=list[User])
 async def get_all_users_including_reports_endpoint(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+
     users = get_all_users_with_reports(db, skip=skip, limit=limit)
+
+    if users is None:
+        raise HTTPException(status_code=404, detail="No Users found")
     return users
 
 
