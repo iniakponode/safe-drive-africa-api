@@ -12,7 +12,7 @@ router = APIRouter()
 
 
 @router.get("/reports/", response_model=list[Report])
-async def get_reports(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+async def get_all_reports(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     report = get_all_reports(db, skip=skip, limit=limit)
     if report is None:
         raise HTTPException(status_code=404, detail="No Reports found")
