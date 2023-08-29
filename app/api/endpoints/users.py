@@ -15,8 +15,8 @@ router = APIRouter()
 
 
 @router.post("/register/", response_model=User)
-def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
-    user = create_user(db, user_data.token)
+async def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
+    user = create_user(db, token=user_data.token, usertype=user_data.userType)  # Pass the correct arguments
     return user
 
 
@@ -54,7 +54,7 @@ async def get_user(user_id: int, db: Session = Depends(get_db)):
     return user
 
 
-@router.get("/user-include-repors/{user_id}/", response_model=User)
+@router.get("/user-include-reports/{user_id}/", response_model=User)
 async def get_user_include_report(user_id: int, db: Session = Depends(get_db)):
     user = get_user_by_id_with_reports(db, user_id)
     if user is None:

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.api.database.queries.report_queries import create_report, get_report_by_id, delete_report, get_all_reports
+from app.api.database.queries.report_queries import create_report, get_report_by_id, delete_report, get_reports
 from app.api.database.queries.user_queries import get_user_by_id
 from app.api.schemas.report_schemas import ReportCreate, Report
 from app.api.database.dependency.db_instance import get_db
@@ -13,10 +13,19 @@ router = APIRouter()
 
 @router.get("/reports/", response_model=list[Report])
 async def get_all_reports(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    report = get_all_reports(db, skip=skip, limit=limit)
-    if report is None:
+    reports = await get_reports(db, skip, limit)  # Use await to call asynchronous function
+    if not reports:
         raise HTTPException(status_code=404, detail="No Reports found")
-    return report
+    return reports
+
+
+# @router.get("/reports-include-selected-options/", response_model=list[Report])
+# async def get_all_reports_include_selected_options(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+#     reports = get_all_selected_options_for_reports(db, skip, limit)
+#
+#     if reports is None:
+#         raise HTTPException(status_code=404, detail="No Reports found")
+#     return reports
 
 
 @router.post("/reports/", response_model=Report)

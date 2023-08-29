@@ -4,9 +4,9 @@ from app.api.utils.datetime_utils import get_current_datetime
 from sqlalchemy.orm import Session, joinedload
 
 
-def create_user(db: Session, token: str):
+def create_user(db: Session, token: str, usertype: str):
     created_at = get_current_datetime()
-    db_user = User(token=token, created_at=created_at)
+    db_user = User(token=token, userType=usertype, created_at=created_at)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)

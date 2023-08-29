@@ -7,6 +7,7 @@ from app.api.schemas.report_schemas import Report
 
 class UserBase(BaseModel):
     token: str
+    userType: str  # Add userType field
 
 
 class UserCreate(UserBase):

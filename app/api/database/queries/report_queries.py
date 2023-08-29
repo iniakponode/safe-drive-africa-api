@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from app.api.database.models import Report, User
 from app.api.utils.datetime_utils import get_current_datetime
 
@@ -21,12 +21,20 @@ def create_report(db: Session, user_id: int, qualitative: str, quantitative: str
     return db_report
 
 
-def get_all_reports(db: Session, skip: int = 0, limit: int = 100):
+async def get_reports(db: Session, skip: int = 0, limit: int = 100):
     return db.query(Report).offset(skip).limit(limit).all()
+
+
+# def get_all_selected_options_for_reports(db: Session, skip: int = 0, limit: int = 100):
+#     return db.query(Report).options(joinedload(Report.selected_re)).offset(skip).limit(limit).all()
 
 
 def get_report_by_id(db: Session, report_id: int):
     return db.query(Report).filter(Report.id == report_id).first()
+
+
+def get_reports_by_id_with_selections(db: Session, report_id: int):
+    return db.query(Report).filter(Report.id == report_id).options(joinedload(User.reports)).first()
 
 
 def delete_report(db: Session, report: Report):
