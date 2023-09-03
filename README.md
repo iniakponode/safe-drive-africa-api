@@ -3,7 +3,7 @@
 Welcome to the official readme file for the API developed as a part of the PhD research project led by Thompson Iniakpokeikiye Peter in the Department of Computing Science, School of Natural and Computing Sciences at the University of Aberdeen, Scotland, United Kingdom.
 
 # Project Overview:
-The API serves as a pivotal component of a comprehensive research endeavor supervised by Professor Ehud Reiter and Dr. Yi Dewei. This innovative project, generously sponsored by the human resources training division of the Tertiary Education Trust Fund (TetFund) in Nigeria, focuses on advancing safe driving behavior. 
+The API serves as a pivotal component of a comprehensive research endeavor supervised by Professor Ehud Reiter and Dr. Yi Dewei. This innovative project, generously sponsored by the human resources training division of the Tertiary Education Trust Fund (TetFund) in Nigeria. The research focuses on advancing safe driving behavior in Non-Western countries. 
 
 # Project Objectives:
 The PhD research project is focused on identifying the peculiarities with unsafe driving in non-western countries, Nigeria as case study. This research endeavour is basically concerned with collection of real time drivers’ behaviour data from Nigeria as well as the development of AI/NLG powered mobile applications that can automatically generate driving behaviour feedback for drivers, to encourage safer driving in Nigeria and which can be adapted in other African countries.
@@ -60,7 +60,7 @@ Retrieval of report instances with selected report type and comments.
 
 * bash
 * Copy code
-* git clone https://github.com/your-username/your-fastapi-api.git
+* git clone https://github.com/iniakponode/safe-drive-africa-api.git
 
 ### Install the dependencies:
 
