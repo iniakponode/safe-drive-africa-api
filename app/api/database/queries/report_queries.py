@@ -4,7 +4,7 @@ from app.api.utils.datetime_utils import get_current_datetime
 
 
 def create_report(db: Session, user_id: int, qualitative: str, quantitative: str, selected_report: str, comment: str,
-                  agree: bool):
+                  agree: bool, change_b:bool):
     created_at = get_current_datetime()
     db_report = Report(
         user_id=user_id,
@@ -13,6 +13,7 @@ def create_report(db: Session, user_id: int, qualitative: str, quantitative: str
         selected_report=selected_report,
         comment=comment,
         agree=agree,
+        change_b=change_b,
         created_at=created_at
     )
     db.add(db_report)

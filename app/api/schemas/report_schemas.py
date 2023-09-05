@@ -12,6 +12,7 @@ class ReportBase(BaseModel):
     selected_report: str  # Updated type
     comment: str
     agree: bool
+    change_b:bool
 
 
 class ReportCreate(ReportBase):

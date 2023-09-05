@@ -30,6 +30,7 @@ class Report(Base):
     selected_report = Column(String(20))  # Corrected type
     comment = Column(String(500))
     agree = Column(Boolean)
+    change_b = Column(Boolean)
     created_at = Column(DateTime, default=datetime.utcnow)  # Automatic timestamp
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", back_populates="reports")
